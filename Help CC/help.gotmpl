@@ -1,0 +1,12 @@
+{{/*
+	Trigger: Help
+	Trigger Type: Command
+
+    NOTE:- Disable the Original Help Command in Command Overwrites in your YAG Dashboard.
+	
+	Made by WickedWizard#3588
+	Need help or you found a bug? Join https://dsc.gg/gamerscorner or report it on GitHub.
+*/}}
+
+{{$id := sendMessageRetID nil "Which help pages do you want to see?\n<:cc_command:781958807823450124> - Commands\n<:cc_icon:780080308820901919> - Custom Commands"}}
+{{addMessageReactions nil $id "❌" "cc_command:781958807823450124" "cc_icon:780080308820901919"}}

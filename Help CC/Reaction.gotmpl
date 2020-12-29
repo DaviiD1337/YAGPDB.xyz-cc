@@ -1,0 +1,29 @@
+{{/*
+
+	Trigger: Added Reactions Only
+	Trigger Type: Reaction
+	
+	Made by WickedWizard#3588
+	Need help or you found a bug? Join https://dsc.gg/gamerscorner or report it on GitHub.
+
+*/}}
+
+{{/*ID of Crafter's CC, if you have it. If not, you need to edit parts of the code. If you want it, get it here. https://github.com/TheHDCrafter/yagpdb-cc/tree/master/CC
+Also, disable the Original CC in Command Overwrites in your YAG Dashboard, if and only if you're using Crafter's CC. Else, no. */}}
+
+{{/*Configuration Values Start*/}}
+{{$CCID := 47}}{{/*This part is optional, only if you have Crafter's CC. Else, remove it.*/}}
+{{/*Configuration Values End*/}}
+
+{{if eq .Reaction.Emoji.Name "❌"}}
+    {{deleteMessage nil .Message.ID 0}}
+{{else if eq .Reaction.Emoji.ID 781958807823450124}}
+	{{editMessage nil .Message.ID "You've got mail. Check you DM's."}}
+	{{exec "help"}}
+	{{deleteAllMessageReactions nil .Message.ID}}
+	{{addMessageReactions nil .Message.ID "❌"}}
+{{else if eq .Reaction.Emoji.ID 780080308820901919}}
+	{{execAdmin "clean" 1}}{{/*Only if you have Crafter's CC*/}}
+	{{execCC $CCID nil 0 nil}}{{/*Only if you have Crafter's CC*/}}
+	{{/*editMessage nil .Message.ID (exec "cc")*/}}{{/*This is needed when you don't have Crafter's CC.*/}}
+{{end}}

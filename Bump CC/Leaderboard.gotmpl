@@ -1,0 +1,28 @@
+{{/*
+    
+  Usage `!d lb`
+  Recommended trigger: `!d lb`
+	Trigger type: Starts With
+  Credits: WickedWizard#3588  
+  Please read through the code properly and try to learn, rather than copying. Same goes for the other cc's here too.
+  The LeaderBoards are against Disboard's ToS, use them at your own risk
+  
+  */}}
+ 
+{{sleep 1}}
+{{ $page := 1 }} {{/* Default page to start at */}}
+{{ with reFind `\d+` (joinStr " " .CmdArgs) }} {{ $page = . | toInt }} {{ end }} {{/* If the user provided a page, change $page variable to that */}}
+{{ $skip := mult (sub $page 1) 10 }} {{/* Amount of entries to skip */}}   
+{{ $users := dbTopEntries "BumpXP" 10 $skip }} 
+{{ if not (len $users) }}
+	{{sendMessage nil "There are no users on that page"}}{{execAdmin "clean" 1 302050872383242240}}
+{{else}}
+  {{$rank := 0}}
+        {{$list:=""}}
+{{range dbTopEntries "BumpXP" 10 $skip}}
+        {{ $rank = add $rank 1 }}
+        {{- $list = print $list "**" $rank ".** " .User.Username "** - **" .Value "\n" -}}
+    {{end}}
+        {{sendMessage nil (cembed "title" (joinStr "" "🏆Bumping LeaderBoard for " .Guild.Name "") "description" $list "footer" (sdict "text" "To navigate to the next page, type `!d lb 2`"))}}
+        {{execAdmin "clean" 1 302050872383242240}}
+{{end}}

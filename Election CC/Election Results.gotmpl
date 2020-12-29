@@ -1,0 +1,38 @@
+{{/*
+
+Usage: `-result/winner` or `@YAGPDB.xyz#8760 winner/result`
+Recommend Trigger:- Regex with Trigger 
+`\A-(result|winner)(\s+|\z)`
+Replace the `-` in the Regex with your YAG Trigger
+
+*/}}
+
+{{deleteTrigger 0}}
+{{$winner :=  dbTopEntries "Vote" 1 0}}
+{{$list := ""}}
+{{range $winner}}
+    {{$list = (cembed "title" (joinStr "" $list "The Winner is " ) "description" (print "**" .User.Username "** \n\n**Total Votes:-** " .Value) "color" (randInt 1111111 9999999))}}
+{{end}}
+{{$s := sendMessageRetID nil "The Winner will be announced in 10 seconds"}}
+{{sleep 1}}
+{{editMessage nil $s "The Winner will be announced in 9 seconds"}}
+{{sleep 1}}
+{{editMessage nil $s "The Winner will be announced in 8 seconds"}}
+{{sleep 1}}
+{{editMessage nil $s "The Winner will be announced in 7 seconds"}}
+{{sleep 1}}
+{{editMessage nil $s "The Winner will be announced in 6 seconds"}}
+{{sleep 1}}
+{{editMessage nil $s "The Winner will be announced in 5 seconds"}}
+{{sleep 1}}
+{{editMessage nil $s "The Winner will be announced in 4 seconds"}}
+{{sleep 1}}
+{{editMessage nil $s "The Winner will be announced in 3 seconds"}}
+{{sleep 1}}
+{{editMessage nil $s "The Winner will be announced in 2 seconds"}}
+{{sleep 1}}
+{{editMessage nil $s "The Winner will be announced in 1 seconds"}}
+{{sleep 1}}
+{{execAdmin "clean" 1 204255221017214977}}
+{{sleep 1}}
+{{sendMessage nil $list}}
