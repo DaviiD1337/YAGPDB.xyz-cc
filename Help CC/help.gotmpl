@@ -1,6 +1,6 @@
 {{/*
-	Trigger: Help
-	Trigger Type: Command
+	Trigger: \A(-?|<@!?204255221017214977>\s*)(help|h|commands|command|how)(\s+|\z)
+	Trigger Type: Regex
 
     NOTE:- Disable the Original Help Command in Command Overwrites in your YAG Dashboard.
 	
@@ -8,5 +8,13 @@
 	Need help or you found a bug? Join https://dsc.gg/gamerscorner or report it on GitHub.
 */}}
 
-{{$id := sendMessageRetID nil "Which help pages do you want to see?\n<:cc_command:781958807823450124> - Commands\n<:cc_icon:780080308820901919> - Custom Commands"}}
-{{addMessageReactions nil $id "❌" "cc_command:781958807823450124" "cc_icon:780080308820901919"}}
+{{/*Configuration Values Start*/}}
+{{$reaction := "🗑"}}{{/*The emoji that you want YAG to add for deletion. For custom emoji, type `;emoji` in the testing channel in YAG Support Server*/}}
+{{/*Configuration Values End*/}}
+{{if .StrippedMsg}}
+	{{$a := sendMessageRetID nil (index (exec "help" .StrippedMsg) 0)}}
+	{{addMessageReactions nil $a $reaction}}
+{{else}}
+	{{$b := sendMessageRetID nil "Which Help Menu do you want to see? \n<:cc_command:781958807823450124> - Commands \n<:cc_icon:780080308820901919> - Custom Commands"}}
+	{{addMessageReactions nil $b $reaction "cc_command:781958807823450124" "cc_icon:780080308820901919"}}
+{{end}}
