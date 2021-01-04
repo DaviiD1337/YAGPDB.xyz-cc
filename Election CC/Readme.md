@@ -12,6 +12,6 @@ This is an Election CC. If you want justice, when two users, are fighting, and w
 
 5. After the election is over, lock the channel, set the Election.gotmpl to run only in the specific channels, and none selected in that list, to turn off that CC.
 
-6. After turning off the Election.gotmpl CC, lock the Election Channel, and run `-result/winner` in your Announcemnt channe, or the Election Channel only.
+6. After turning off the Election.gotmpl CC, lock the Election Channel, and run `-result/winner` in your Announcemnt channel, or the Election Channel only.
 
 7. The bot will give the poll's winner.
