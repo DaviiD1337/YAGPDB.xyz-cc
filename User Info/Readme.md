@@ -7,8 +7,7 @@ Ok, so here is the CC. This shows the details of the user who joined the server.
 
 2. Shows Custom Status of User, Time in Minutes, Current Age, Bot Status and Joined Guild At.
 
-With Inline, Random Color and 24hour Clock
-![](https://cdn.discordapp.com/attachments/794850582002401341/795682842390560788/unknown.png)
 
-Without Inline, Highest Role Color and 12hour Clock
-![](https://cdn.discordapp.com/attachments/794850582002401341/795683449327452180/unknown.png)
+![With Inline, Random Color and 24hour Clock](https://cdn.discordapp.com/attachments/794850582002401341/795682842390560788/unknown.png)
+
+![Without Inline, Highest Role Color and 12hour Clock](https://cdn.discordapp.com/attachments/794850582002401341/795683449327452180/unknown.png)
