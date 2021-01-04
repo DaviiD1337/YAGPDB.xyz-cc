@@ -18,6 +18,10 @@ This is a Election CC, which can be used to vote for many users. You cannot vote
 
 ### Note:- When you use the above Election CC, you need to reset the `Vote_Cooldown` and `Vote` Databases. (Case-Sensitive)
 
+## 4. User Info
+
+A User Info CC, when a user joins, sends it to the Log Channel, so that you can analyze the User if he is a self-bot/breaks the ToS
+
 ## This is meant to be an inexhaustive CC page. If you come across any issues, join my [Discord Server](https://dsc.gg/gamerscorner) and create a ticket. 
 
 ### Discord Server Invite https://dsc.gg/gamerscorner
