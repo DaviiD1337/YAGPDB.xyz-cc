@@ -6,9 +6,7 @@ Here are the List of CC's here for now:-
 
 ## 1. Bump CC
  
-This is a Bump CC, which shows you the Bumping LeaderBoard, Bump Level, Bump Pings and Strikes out the Bump Message after the Bump is done.
-
-### Warning:- Bump Leaderboards are against Disboard's ToS. Use it at your own risk.
+### Removed due to Disboard's Changing ToS
 
 ## 2. Help CC
 
