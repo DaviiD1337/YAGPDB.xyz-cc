@@ -13,21 +13,22 @@ After the Election is over, lock the channel, and type `-election result`
 
 
 {{if dbGet .User.ID "Vote_Cooldown"}}
-You have already voted this poll, wait for the next one {{.User.Mention}}.
-{{deleteResponse}}
+    You have already voted this poll, wait for the next one {{.User.Mention}}.
+    {{deleteResponse}}
 {{else}}
-{{if .Message.Mentions}}
-{{$user := (index .Message.Mentions 0).ID}}
-{{if eq $user .User.ID}}
-Don't try to trick me, you can't vote for yourself {{.User.Mention}}
-{{deleteResponse}}
-{{else}}
-You have successfully voted for that user {{.User.String}}
-{{deleteResponse}}
-{{$t := dbIncr $user "Vote" 1}}
-{{$t1 := dbSet .User.ID "Vote_Cooldown" "Vote_Cooldown"}}
-{{end}}
-{{else}}
-Please mention someone to vote for {{.User.Mention}}. Thanks
-{{deleteResponse}}
+    {{if .Message.Mentions}}
+        {{$user := (index .Message.Mentions 0).ID}}
+        {{if eq $user .User.ID}}
+            Don't try to trick me, you can't vote for yourself {{.User.Mention}}
+            {{deleteResponse}}
+        {{else}}
+            You have successfully voted for that user {{.User.String}}
+            {{deleteResponse}}
+            {{$t := dbIncr $user "Vote" 1}}
+            {{$t1 := dbSet .User.ID "Vote_Cooldown" "Vote_Cooldown"}}
+        {{end}}
+    {{else}}
+        Please mention someone to vote for {{.User.Mention}}. Thanks
+        {{deleteResponse}}
+    {{end}}
 {{end}}
