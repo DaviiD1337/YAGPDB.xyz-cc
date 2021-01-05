@@ -1,3 +1,11 @@
+{{/*
+
+    Made by WickedWizard3588
+    Put this in the Join Message in your Notifications > General
+    If you found a bug, open an Issue, or if you know fixing, PR it, or report it in my Discord Server https://dsc.gg/gamerscorner
+
+*/}}
+
 {{/*Configuration Values Start*/}}
 {{$logchannel := 794850582002401341}}{{/*ID of the channel, where the details about user should go*/}}
 {{$timeformat := 0}}{{/*Set to 0 if you want it in 24h format, like 14:02, else set it to 1*/}}
@@ -21,8 +29,14 @@
     {{$bot = "False"}}
 {{end}}
 
-{{$whois := exec "whois"}}
-{{$status := index ($whois).Fields 6}}
+    {{$A := ""}}
+    {{$C := exec "whois"}}
+    {{$b := index ($C).Fields 6}}
+    {{if in $b.Value ":"}}
+        {{$A = (index (split $b.Value ":") 1)}} 
+    {{else}}
+        {{$A = $b.Value}}
+    {{end}}
 
 {{$col := ""}}
 {{if eq $color 1}}
@@ -39,7 +53,7 @@
         (sdict "name" "❯ Time in Minutes" "value" (toString currentUserAgeMinutes) "inline" $inline)
         (sdict "name" "❯ Current Age" "value" (toString currentUserAgeHuman) "inline" $inline)
         (sdict "name" "❯ Bot?" "value" $bot "inline" $inline)
-        (sdict "name" "❯ Current Custom Status" "value" (index (split ($status.Value) ":") 1) "inline" $inline)
+        (sdict "name" "❯ Current Custom Status" "value" $A "inline" $inline)
         (sdict "name" "❯ Joined At" "value" $joined "inline" $inline))
     "thumbnail" (sdict "url" (.User.AvatarURL "1024"))
     "color" $col
